@@ -89,7 +89,7 @@ What a release contains:
 | `PartyLine_<v>_amd64.deb` | Linux (Debian/Ubuntu) |
 | `latest.json` | what installed apps read: version, notes, download links, signatures |
 
-## One-time GitHub setup (done)
+## One-time GitHub setup
 
 1. The repository is **public**: installed apps download `latest.json` and the updates without
    signing in, which a private repository's releases do not allow.

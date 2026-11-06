@@ -1,0 +1,3 @@
+# Windows CI checks out with CRLF otherwise; scripts and version pins must stay LF
+*.sh text eol=lf
+*.version text eol=lf

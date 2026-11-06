@@ -9,11 +9,11 @@
 # Usage: scripts/fetch-livekit.sh [target-triple ...]   (default: this machine's triple)
 set -euo pipefail
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-VERSION="$(tr -d ' \n' < "$ROOT/apps/desktop/livekit.version")"
+VERSION="$(tr -d ' \r\n' < "$ROOT/apps/desktop/livekit.version")"
 V="${VERSION#v}"
 OUT="$ROOT/apps/desktop/src-tauri/binaries"
 mkdir -p "$OUT"
-host_triple() { rustc -vV 2>/dev/null | sed -n 's/^host: //p'; }
+host_triple() { rustc -vV 2>/dev/null | tr -d '\r' | sed -n 's/^host: //p'; }
 TRIPLES=("$@"); [ ${#TRIPLES[@]} -eq 0 ] && TRIPLES=("$(host_triple)")
 TMP="$(mktemp -d)"; trap 'rm -rf "$TMP"' EXIT
 BASE="https://github.com/livekit/livekit/releases/download/$VERSION"

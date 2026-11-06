@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PartyLine — Wi‑Fi intercom for production crews</title>
+  <meta name="description" content="PartyLine is a free, low-latency partyline intercom for small production teams. Host it on a laptop, join from iPhone, Android or a browser on the same Wi‑Fi. Headsets on, phones locked, producer talks to anyone.">
+  <meta name="theme-color" content="#0b0f17">
+  <meta property="og:title" content="PartyLine — Wi‑Fi intercom for production crews">
+  <meta property="og:description" content="Turn the phones your crew already carries into a low-latency partyline intercom. One laptop hosts, everyone joins over Wi‑Fi.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://crownemmanuel.github.io/partyline/assets/hero.jpg">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="nav" id="top">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top"><img src="assets/icon.png" alt="" width="32" height="32"><span>PartyLine</span></a>
+      <nav class="nav-links" aria-label="Main">
+        <a href="#how">How it works</a>
+        <a href="#features">Features</a>
+        <a href="#download">Download</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="btn btn-ghost nav-gh" href="https://github.com/crownemmanuel/partyline" aria-label="PartyLine on GitHub">
+        <svg viewBox="0 0 16 16" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <picture class="hero-bg">
+        <source srcset="assets/hero.webp" type="image/webp">
+        <img src="assets/hero.jpg" alt="" fetchpriority="high">
+      </picture>
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="live-dot"></span> Free &amp; open source intercom</p>
+          <h1>Your whole crew on one channel. <em>No beltpacks.</em></h1>
+          <p class="lede">PartyLine turns the phones your team already carries into a low‑latency partyline intercom. One laptop hosts, everyone joins over the venue Wi‑Fi. Headsets on, screens locked, and a producer who can talk to any group, or any one person.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" id="hero-download" href="https://github.com/crownemmanuel/partyline/releases/latest">
+              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0 5-5m-5 5-5-5M5 20h14"/></svg>
+              <span id="hero-download-label">Download for desktop</span>
+            </a>
+            <a class="btn btn-ghost" href="#how">See how it works</a>
+          </div>
+          <p class="fine">macOS · Windows · Linux host · iPhone, Android &amp; browser clients</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Strip -->
+    <section class="strip">
+      <div class="wrap strip-inner">
+        <div><b>LAN‑fast</b><span>Opus over WebRTC, never via the cloud</span></div>
+        <div><b>3 – 30</b><span>devices per show</span></div>
+        <div><b>0</b><span>cloud accounts or subscriptions</span></div>
+        <div><b>Locked</b><span>phones keep talking all shift</span></div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="section" id="how">
+      <div class="wrap">
+        <p class="kicker">How it works</p>
+        <h2>Up and talking before doors open</h2>
+        <div class="how-grid">
+        <ol class="steps">
+          <li>
+            <span class="step-n">1</span>
+            <h3>Host on a laptop</h3>
+            <p>Open the PartyLine desktop app on any Mac, Windows or Linux machine. It starts the audio server, the control server and the admin console. Nothing to configure, nothing to sign up for.</p>
+          </li>
+          <li>
+            <span class="step-n">2</span>
+            <h3>Crew joins with a code</h3>
+            <p>Phones on the same Wi‑Fi find the host automatically. Tap it, enter the 6‑digit join code (or scan the QR), type a name. Browsers just open the URL the host shows.</p>
+            <div class="code-demo" aria-hidden="true"><span>4</span><span>8</span><span>2</span><span>1</span><span>9</span><span>7</span></div>
+          </li>
+          <li>
+            <span class="step-n">3</span>
+            <h3>Lock the phone. Talk.</h3>
+            <p>Plug in a headset and pocket the phone. PartyLine runs as an ongoing call, so it keeps working with the screen off. Tomorrow it reconnects on its own, no code needed.</p>
+          </li>
+        </ol>
+        <!-- Phone mock of the crew screen -->
+        <div class="phone" aria-label="PartyLine crew screen preview" role="img">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="ps-top">
+              <div>
+                <div class="ps-group"><span class="sw sw-blue"></span>CAMERA</div>
+                <div class="ps-host">Production laptop</div>
+              </div>
+              <div class="ps-live"><span class="live-dot"></span>live</div>
+            </div>
+            <div class="ps-talking">
+              <span class="ps-label">Talking</span>
+              <span class="ps-who">Producer <span class="bars"><i></i><i></i><i></i><i></i></span></span>
+            </div>
+            <button class="ps-talk" type="button" tabindex="-1">HOLD TO TALK</button>
+            <div class="ps-row">
+              <span class="ps-chip">Mic</span>
+              <span class="ps-chip">Speaker</span>
+            </div>
+            <div class="ps-reply">Reply to producer</div>
+            <div class="ps-msg"><b>Producer:</b> Standby cam 2, wide on the stage <span class="ps-quick">OK</span></div>
+          </div>
+        </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature: producer -->
+    <section class="section feature">
+      <div class="wrap feature-grid">
+        <figure class="feature-img">
+          <picture>
+            <source srcset="assets/producer.webp" type="image/webp">
+            <img src="assets/producer.jpg" alt="A producer wearing a headset directs the crew from a laptop" loading="lazy" width="1200" height="800">
+          </picture>
+        </figure>
+        <div class="feature-copy">
+          <p class="kicker">For the producer</p>
+          <h2>Talk to anyone. Hear only what you need.</h2>
+          <p>The host app doubles as the admin console. Talk to one group, several groups, everyone, or a single person. Pick which groups you listen to and solo the ones that matter right now.</p>
+          <ul class="ticks">
+            <li>Talk to all, to a group, or to one device</li>
+            <li>Mute, rename, move or remove any device</li>
+            <li>Force hold‑to‑talk for the noisy ones</li>
+            <li>See who is speaking, battery, headset and latency</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature: groups -->
+    <section class="section feature">
+      <div class="wrap feature-grid reverse">
+        <figure class="feature-img">
+          <picture>
+            <source srcset="assets/crew.webp" type="image/webp">
+            <img src="assets/crew.jpg" alt="A small crew wearing headsets during a backstage briefing" loading="lazy" width="1200" height="800">
+          </picture>
+        </figure>
+        <div class="feature-copy">
+          <p class="kicker">Groups</p>
+          <h2>Camera talks to camera. Backstage stays backstage.</h2>
+          <p>Split the team into groups. Each person talks and listens in their own group, and the server enforces who can hear whom, so backstage chatter never ends up in the camera operators' ears.</p>
+          <div class="groups" aria-hidden="true">
+            <span class="g g-red"><i></i>Producer</span>
+            <span class="g g-blue"><i></i>Camera</span>
+            <span class="g g-green"><i></i>Backstage</span>
+          </div>
+          <p class="muted">Need the producer? Hold <b>Reply to producer</b> and only they hear you.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Feature: pocket -->
+    <section class="section feature">
+      <div class="wrap feature-grid">
+        <figure class="feature-img">
+          <picture>
+            <source srcset="assets/pocket.webp" type="image/webp">
+            <img src="assets/pocket.jpg" alt="A camera operator with an earpiece and a locked phone in the jacket pocket" loading="lazy" width="1200" height="800">
+          </picture>
+        </figure>
+        <div class="feature-copy">
+          <p class="kicker">In the pocket</p>
+          <h2>Built for a whole shift with the screen off.</h2>
+          <p>On iPhone PartyLine uses CallKit, on Android a call‑style foreground service, so the system treats it like a phone call that never drops. Mute from the lock screen, or use the headset button as push‑to‑talk.</p>
+          <ul class="ticks">
+            <li>Keeps running with the phone locked</li>
+            <li>Headset button: latch or push‑to‑talk</li>
+            <li>Messages and attention buzz on the lock screen</li>
+            <li>Warns when there is no headset (echo risk)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features grid -->
+    <section class="section" id="features">
+      <div class="wrap">
+        <p class="kicker">Everything else</p>
+        <h2>Small on purpose. Serious where it counts.</h2>
+        <div class="cards">
+          <article class="card">
+            <div class="card-ic ic-red"><svg viewBox="0 0 24 24"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg></div>
+            <h3>Low latency</h3>
+            <p>Opus audio over WebRTC, forwarded by a local media server with no mixing step and no trip to the internet.</p>
+          </article>
+          <article class="card">
+            <div class="card-ic ic-blue"><svg viewBox="0 0 24 24"><path d="M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0M2 9a14 14 0 0 1 20 0"/><circle cx="12" cy="19.5" r="1.2"/></svg></div>
+            <h3>Local network only</h3>
+            <p>Everything stays on your Wi‑Fi. Works in venues with no internet at all. Traffic is encrypted with a certificate the host makes on first run.</p>
+          </article>
+          <article class="card">
+            <div class="card-ic ic-green"><svg viewBox="0 0 24 24"><rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/></svg></div>
+            <h3>Join from anything</h3>
+            <p>iPhone app, Android app, the desktop app on another computer, or any modern browser pointed at the host.</p>
+          </article>
+          <article class="card">
+            <div class="card-ic ic-red"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H8l-4 4z"/></svg></div>
+            <h3>Text &amp; quick replies</h3>
+            <p>When nobody can talk: send text to a group or a person, answer with one tap — OK, Standby, Ready — or send an attention buzz.</p>
+          </article>
+          <article class="card">
+            <div class="card-ic ic-blue"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg></div>
+            <h3>Devices are remembered</h3>
+            <p>Camera 2 today is Camera 2 tomorrow. Returning devices reconnect to their group without a join code.</p>
+          </article>
+          <article class="card">
+            <div class="card-ic ic-green"><svg viewBox="0 0 24 24"><path d="M3 12h3l3-7 4 14 3-7h5"/></svg></div>
+            <h3>Voice isolation</h3>
+            <p>Noise suppression keeps the generator hum and crowd roar out of everyone else's ears.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Download -->
+    <section class="section download" id="download">
+      <div class="wrap">
+        <p class="kicker">Download</p>
+        <h2>Get PartyLine</h2>
+        <p class="section-lede">Install the desktop app on the laptop that hosts the show. The same app can also join someone else's show as a client.</p>
+        <div class="platforms">
+          <a class="platform" data-os="mac" href="https://github.com/crownemmanuel/partyline/releases/latest">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M16.4 12.6c0-2.4 2-3.6 2.1-3.7-1.2-1.7-3-1.9-3.6-2-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.5-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.9-1.1-2.9-4.2zM13.9 5.2c.7-.9 1.2-2 1-3.2-1 0-2.3.7-3 1.6-.7.8-1.2 2-1.1 3.1 1.2.1 2.3-.6 3.1-1.5z"/></svg>
+            <div><b>macOS</b><span>Apple silicon · .dmg</span></div>
+          </a>
+          <a class="platform" data-os="win" href="https://github.com/crownemmanuel/partyline/releases/latest">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 5.5 10.5 4.4v7.1H3zm8.5-1.2L21 3v8.5h-9.5zM3 12.5h7.5v7.1L3 18.5zm8.5 0H21V21l-9.5-1.3z"/></svg>
+            <div><b>Windows</b><span>Installer · -setup.exe</span></div>
+          </a>
+          <a class="platform" data-os="linux" href="https://github.com/crownemmanuel/partyline/releases/latest">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2c-2.2 0-3.6 1.8-3.6 4.4 0 1.4.3 2.3-.6 3.6-1.2 1.7-3 4-3 6.6 0 .8.2 1.5.5 2.1-.6.3-1.3.8-1.3 1.5 0 1 1.6 1 2.8 1.4 1.2.4 1.9 1 2.9 1 .8 0 1.3-.4 1.6-.9h1.4c.3.5.8.9 1.6.9 1 0 1.7-.6 2.9-1 1.2-.4 2.8-.4 2.8-1.4 0-.7-.7-1.2-1.3-1.5.3-.6.5-1.3.5-2.1 0-2.6-1.8-4.9-3-6.6-.9-1.3-.6-2.2-.6-3.6C15.6 3.8 14.2 2 12 2zm-1.6 4.2c.4 0 .7.5.7 1.1 0 .6-.3 1.1-.7 1.1s-.7-.5-.7-1.1c0-.6.3-1.1.7-1.1zm3.2 0c.4 0 .7.5.7 1.1 0 .6-.3 1.1-.7 1.1s-.7-.5-.7-1.1c0-.6.3-1.1.7-1.1zM12 9.3c.9 0 2 .6 2 1 0 .5-1.1 1.1-2 1.1s-2-.6-2-1.1c0-.4 1.1-1 2-1z"/></svg>
+            <div><b>Linux</b><span>.AppImage · .deb</span></div>
+          </a>
+        </div>
+        <div class="phones-note">
+          <div>
+            <h3>iPhone &amp; Android</h3>
+            <p>Crew phones join the host as clients. The Android app can be installed straight from the host (it serves the APK on your network). The iPhone app currently builds from source with Xcode; see the repository for instructions. Any phone can also join instantly from its browser.</p>
+          </div>
+          <a class="btn btn-ghost" href="https://github.com/crownemmanuel/partyline">View source on GitHub</a>
+        </div>
+        <p class="fine center">Desktop apps update themselves when a new release is published. All builds are on the <a href="https://github.com/crownemmanuel/partyline/releases">releases page</a>.</p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section" id="faq">
+      <div class="wrap narrow">
+        <p class="kicker">FAQ</p>
+        <h2>Questions crews ask</h2>
+        <div class="faq">
+          <details>
+            <summary>Does it need the internet?</summary>
+            <p>No. Everything runs between the host laptop and the devices on the same Wi‑Fi network. A travel router with no uplink works fine.</p>
+          </details>
+          <details>
+            <summary>How many people can join?</summary>
+            <p>PartyLine is designed for small production teams: about 3 to 30 devices, one show at a time.</p>
+          </details>
+          <details>
+            <summary>Will it keep working when my phone is locked?</summary>
+            <p>Yes, on the iPhone and Android apps. PartyLine registers as an ongoing call (CallKit on iPhone, a call‑style foreground service on Android), so it keeps running for a whole shift. Browsers cannot guarantee this, so use the app for anyone who pockets their phone.</p>
+          </details>
+          <details>
+            <summary>Do I need special headsets?</summary>
+            <p>Any wired or Bluetooth headset with a microphone works. A headset is strongly recommended: on speaker the phone can echo, and PartyLine warns you about it.</p>
+          </details>
+          <details>
+            <summary>Push‑to‑talk or open mic?</summary>
+            <p>Both. Each person can hold to talk or latch the mic on. The producer can force hold‑to‑talk on any device.</p>
+          </details>
+          <details>
+            <summary>Why does my browser warn about the certificate?</summary>
+            <p>The host makes its own encryption certificate on first run, because there is no internet authority to sign it on a private network. The native apps verify the host by its fingerprint; in a browser you accept it once.</p>
+          </details>
+          <details>
+            <summary>Is it free?</summary>
+            <p>Yes. PartyLine is open source. No accounts, no subscriptions, no cloud.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap footer-inner">
+      <a class="brand" href="#top"><img src="assets/icon.png" alt="" width="28" height="28"><span>PartyLine</span></a>
+      <p>Wi‑Fi intercom for production crews.</p>
+      <nav aria-label="Footer">
+        <a href="https://github.com/crownemmanuel/partyline">GitHub</a>
+        <a href="https://github.com/crownemmanuel/partyline/releases">Releases</a>
+        <a href="https://github.com/crownemmanuel/partyline/issues">Report an issue</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -29,7 +29,8 @@ git push origin HEAD v0.2.0           builds macOS + Windows + Linux,       → 
   on its own.
 - When there is one, a green **PartyLine 0.2.0 is available · Update** notice shows on the Home
   screen, under the host status bar, and in Settings (which also has **Check for updates** and the
-  release notes).
+  release notes). On macOS, **PartyLine → Check for Updates…** in the menu bar checks right away
+  and answers in a dialog (up to date, or **Update and Restart** / **Later**).
 - **Update** downloads the update, checks its signature, stops hosting (or the join proxy),
   installs and restarts. The app comes back in the same role with the same join code, groups and
   certificate, so phones reconnect by themselves after a few seconds. Do it between shows, not

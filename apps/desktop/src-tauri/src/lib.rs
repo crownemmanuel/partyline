@@ -167,15 +167,17 @@ async fn update_check(app: tauri::AppHandle) -> Result<updater::Status, String> 
 #[tauri::command]
 async fn update_install(app: tauri::AppHandle, version: String) -> Result<(), String> {
     let ctl = app.state::<Ctl>();
-    updater::install(&app, &version, async {
-        if let Some(p) = ctl.proxy.lock().await.take() {
-            p.stop();
-        }
-        if let Some(h) = ctl.host.lock().await.take() {
-            h.stop().await;
-        }
-    })
-    .await
+    updater::install(&app, &version, stop_roles(&ctl)).await
+}
+
+/// Stop hosting / the join proxy before an update replaces the app (and the LiveKit sidecar).
+async fn stop_roles(ctl: &Ctl) {
+    if let Some(p) = ctl.proxy.lock().await.take() {
+        p.stop();
+    }
+    if let Some(h) = ctl.host.lock().await.take() {
+        h.stop().await;
+    }
 }
 
 pub fn run() {
@@ -183,8 +185,22 @@ pub fn run() {
     let app = tauri::Builder::default()
         // Checked and installed from Rust only (updater.rs); no webview gets the plugin's commands.
         .plugin(tauri_plugin_updater::Builder::new().build())
+        // Native dialogs for PartyLine → Check for Updates… (Rust only, no webview permissions)
+        .plugin(tauri_plugin_dialog::init())
         .manage(updater::Updates::default())
+        .on_menu_event(|app, e| {
+            if e.id() == updater::MENU_CHECK {
+                let app = app.clone();
+                tauri::async_runtime::spawn(async move {
+                    let ctl = app.state::<Ctl>();
+                    let hosting = ctl.host.lock().await.is_some();
+                    updater::check_from_menu(&app, hosting, stop_roles(&ctl)).await;
+                });
+            }
+        })
         .setup(|app| {
+            #[cfg(target_os = "macos")]
+            app.set_menu(updater::app_menu(app.handle())?)?;
             let prefs_path = app.path().app_config_dir().unwrap_or_else(|_| std::env::temp_dir()).join("prefs.json");
             let ctl = Ctl {
                 host: Default::default(),

@@ -3,12 +3,16 @@
 //! The background check only records that a newer version exists; downloading, installing and
 //! restarting happen when the operator presses Update (`update_install`). The check and install
 //! run here in Rust, so no webview (the join-mode proxy serves another host's page) gets the
-//! updater plugin's own commands.
+//! updater plugin's own commands. macOS also has PartyLine → Check for Updates… (`check_from_menu`).
 use serde::Serialize;
 use std::sync::Mutex;
 use std::time::Duration;
+use tauri::menu::{Menu, MenuItem, MenuItemKind};
 use tauri::{AppHandle, Manager, Runtime};
+use tauri_plugin_dialog::{DialogExt, MessageDialogButtons, MessageDialogKind};
 use tauri_plugin_updater::UpdaterExt;
+
+pub const MENU_CHECK: &str = "check_for_updates";
 
 #[derive(Serialize, Clone, Default)]
 #[serde(rename_all = "camelCase")]
@@ -102,4 +106,56 @@ pub async fn install<R: Runtime, F: std::future::Future<Output = ()>>(app: &AppH
         tracing::error!("installing update {version}: {}", message(e));
     }
     app.restart();
+}
+
+/// macOS: the standard menu with PartyLine → Check for Updates… under About.
+pub fn app_menu<R: Runtime>(app: &AppHandle<R>) -> tauri::Result<Menu<R>> {
+    let menu = Menu::default(app)?;
+    if let Some(MenuItemKind::Submenu(app_menu)) = menu.items()?.into_iter().next() {
+        app_menu.insert(&MenuItem::with_id(app, MENU_CHECK, "Check for Updates…", true, None::<&str>)?, 1)?;
+    }
+    Ok(menu)
+}
+
+/// A native dialog; true when the first button was pressed.
+async fn ask<R: Runtime>(app: &AppHandle<R>, title: &str, text: String, kind: MessageDialogKind, buttons: MessageDialogButtons) -> bool {
+    let (tx, rx) = tokio::sync::oneshot::channel();
+    app.dialog().message(text).title(title).kind(kind).buttons(buttons).show(move |ok| {
+        let _ = tx.send(ok);
+    });
+    rx.await.unwrap_or(false)
+}
+
+/// PartyLine → Check for Updates…: check now and say what was found; Update installs and restarts.
+pub async fn check_from_menu<R: Runtime, F: std::future::Future<Output = ()>>(app: &AppHandle<R>, hosting: bool, before_install: F) {
+    if app.state::<Updates>().0.lock().unwrap().installing {
+        return;
+    }
+    let s = check(app).await;
+    let ok = || MessageDialogButtons::Ok;
+    let Some(a) = s.available else {
+        let (kind, text) = match &s.error {
+            Some(e) => (MessageDialogKind::Warning, format!("Could not check for updates.\n\n{e}")),
+            None => (MessageDialogKind::Info, format!("PartyLine {} is the newest version.", s.current)),
+        };
+        ask(app, if s.error.is_some() { "Check for Updates" } else { "You're up to date" }, text, kind, ok()).await;
+        return;
+    };
+    if s.dev {
+        ask(app, "Update available", format!("PartyLine {} is available (this is {}).\n\nThis is a development build: update it from git.", a.version, s.current), MessageDialogKind::Info, ok()).await;
+        return;
+    }
+    let mut text = format!("PartyLine {} is available. This computer has {}.", a.version, s.current);
+    if let Some(n) = &a.notes {
+        text += &format!("\n\n{n}");
+    }
+    if hosting {
+        text += "\n\nEveryone is disconnected for a few seconds while PartyLine restarts, then reconnects on their own.";
+    }
+    let update = MessageDialogButtons::OkCancelCustom("Update and Restart".into(), "Later".into());
+    if ask(app, "Update available", text, MessageDialogKind::Info, update).await {
+        if let Err(e) = install(app, &a.version, before_install).await {
+            ask(app, "Update failed", e, MessageDialogKind::Error, ok()).await;
+        }
+    }
 }

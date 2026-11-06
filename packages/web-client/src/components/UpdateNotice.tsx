@@ -13,7 +13,8 @@ interface UpdateStatus {
 /**
  * Desktop app only: shows that a new version is published (the app checks GitHub after start
  * and every six hours) and installs it when the operator presses Update. Nothing installs on its own.
- * `full`: also show the current version and a Check button (Settings).
+ * Without an update it shows this version and Check for updates. `full`: also the release notes
+ * and the last check's error (Settings).
  */
 export function UpdateNotice({ full = false, hosting = false, className = "" }: { full?: boolean; hosting?: boolean; className?: string }) {
   const [s, setS] = useState<UpdateStatus | null>(null);
@@ -30,7 +31,6 @@ export function UpdateNotice({ full = false, hosting = false, className = "" }: 
 
   if (!isTauri() || !s) return null;
   const a = s.available;
-  if (!a && !full) return null;
 
   async function check() {
     setBusy("check");

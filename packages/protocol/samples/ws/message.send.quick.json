@@ -1,0 +1,9 @@
+{
+  "type": "message.send",
+  "id": "c-2",
+  "payload": {
+    "to": "d:a0d1e5f2-7c3b-4e8a-9f60-2b4c6d8e0a11",
+    "text": "OK",
+    "kind": "quick"
+  }
+}

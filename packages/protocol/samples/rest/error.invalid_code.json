@@ -1,0 +1,6 @@
+{
+  "error": {
+    "code": "invalid_code",
+    "message": "Wrong join code"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Home screen (bundled) and the web client served by the local host/proxy on loopback",
+  "windows": ["main"],
+  "remote": { "urls": ["http://127.0.0.1:*", "http://localhost:*"] },
+  "permissions": ["core:default"]
+}

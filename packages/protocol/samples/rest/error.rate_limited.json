@@ -1,0 +1,6 @@
+{
+  "error": {
+    "code": "rate_limited",
+    "message": "Too many attempts, try again in 300 s"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "type": "kicked",
+  "ts": "2026-11-05T18:02:11Z",
+  "payload": {
+    "reason": "removed_by_admin"
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "type": "device.upsert",
+  "ts": "2026-11-05T18:02:11Z",
+  "payload": {
+    "id": "0f3c8a72-5d14-4b9e-a6c3-7e21f9d04b58",
+    "displayName": "Camera 2",
+    "platform": "ios",
+    "appVersion": "0.1.0",
+    "groupId": "camera",
+    "listenGroupIds": [
+      "camera"
+    ],
+    "canTalkGroupIds": [
+      "camera"
+    ],
+    "isAdmin": false,
+    "forcedTalkMode": null,
+    "adminMuted": false,
+    "createdAt": "2026-11-05T18:02:11Z",
+    "lastSeenAt": "2026-11-05T18:02:11Z",
+    "live": {
+      "online": true,
+      "rtcConnected": false,
+      "micLive": true,
+      "speakerMuted": false,
+      "talkMode": "ptt",
+      "talkTargets": [
+        "g:camera"
+      ],
+      "speaking": false,
+      "battery": null,
+      "charging": null,
+      "headset": null,
+      "outputRoute": null,
+      "rttMs": null
+    }
+  }
+}

@@ -1,0 +1,4 @@
+module DeepFilterC {
+    header "deep_filter.h"
+    export *
+}

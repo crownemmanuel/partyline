@@ -1,0 +1,7 @@
+{
+  "type": "token.refreshed",
+  "ts": "2026-11-05T18:02:11Z",
+  "payload": {
+    "livekitToken": "eyJhbGciOiJIUzI1NiJ9.SAMPLE.livekit-token"
+  }
+}

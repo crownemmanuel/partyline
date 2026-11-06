@@ -1,0 +1,12 @@
+{
+  "type": "message",
+  "ts": "2026-11-05T18:02:11Z",
+  "payload": {
+    "id": "m-9",
+    "from": "a0d1e5f2-7c3b-4e8a-9f60-2b4c6d8e0a11",
+    "to": "g:camera",
+    "kind": "text",
+    "text": "Cam 2 tighter please",
+    "ts": "2026-11-05T18:02:11Z"
+  }
+}

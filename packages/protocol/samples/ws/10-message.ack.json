@@ -1,0 +1,6 @@
+{
+  "type": "message.ack",
+  "payload": {
+    "messageId": "m-9"
+  }
+}

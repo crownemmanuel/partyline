@@ -1,0 +1,6 @@
+{
+  "type": "state.set",
+  "payload": {
+    "micLive": false
+  }
+}

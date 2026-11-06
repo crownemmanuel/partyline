@@ -1,0 +1,63 @@
+{
+  "deviceToken": "q3J8v2mY0bXo5nQ1zR7tL4wK9eH6uA2sD8fG3jP0cVk",
+  "livekitToken": "eyJhbGciOiJIUzI1NiJ9.SAMPLE.livekit-token",
+  "livekitUrl": "/rtc",
+  "roomName": "partyline",
+  "me": {
+    "id": "0f3c8a72-5d14-4b9e-a6c3-7e21f9d04b58",
+    "displayName": "Camera 2",
+    "platform": "ios",
+    "appVersion": "0.1.0",
+    "groupId": "camera",
+    "listenGroupIds": [
+      "camera"
+    ],
+    "canTalkGroupIds": [
+      "camera"
+    ],
+    "isAdmin": false,
+    "forcedTalkMode": null,
+    "adminMuted": false,
+    "createdAt": "2026-11-05T18:02:11Z",
+    "lastSeenAt": "2026-11-05T18:02:11Z",
+    "live": {
+      "online": false,
+      "rtcConnected": false,
+      "micLive": false,
+      "speakerMuted": false,
+      "talkMode": "ptt",
+      "talkTargets": [
+        "g:camera"
+      ],
+      "speaking": false,
+      "battery": null,
+      "charging": null,
+      "headset": null,
+      "outputRoute": null,
+      "rttMs": null
+    }
+  },
+  "groups": [
+    {
+      "id": "producer",
+      "name": "Producer",
+      "color": "#e11d48",
+      "sortOrder": 0,
+      "defaultTalkMode": "latch"
+    },
+    {
+      "id": "camera",
+      "name": "Camera",
+      "color": "#2563eb",
+      "sortOrder": 1,
+      "defaultTalkMode": null
+    },
+    {
+      "id": "backstage",
+      "name": "Backstage",
+      "color": "#16a34a",
+      "sortOrder": 2,
+      "defaultTalkMode": null
+    }
+  ]
+}

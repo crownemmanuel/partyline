@@ -1,0 +1,23 @@
+.DS_Store
+node_modules/
+dist/
+*.log
+.env
+.env.*
+
+# desktop: build output and fetched/bundled binaries (scripts/fetch-livekit.sh, scripts/fetch-apk.sh)
+apps/desktop/src-tauri/target/
+apps/desktop/src-tauri/gen/
+apps/desktop/src-tauri/binaries/livekit-server-*
+apps/desktop/src-tauri/resources/*.apk
+
+# android: native DeepFilterNet build (apps/android/native/build-native.sh) and its output
+apps/android/native/dfjni/target/
+apps/android/app/src/main/jniLibs/
+
+# updater signing keys never belong in the repo (docs/RELEASES.md)
+*.key
+*.key.password
+
+# mock server state (generated certificate and database)
+packages/protocol/mock-server/.mock-data/

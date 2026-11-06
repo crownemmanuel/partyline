@@ -1,0 +1,14 @@
+{
+  "type": "admin.device.update",
+  "id": "c-4",
+  "payload": {
+    "deviceId": "0f3c8a72-5d14-4b9e-a6c3-7e21f9d04b58",
+    "groupId": "backstage",
+    "listenGroupIds": [
+      "backstage"
+    ],
+    "canTalkGroupIds": [
+      "backstage"
+    ]
+  }
+}

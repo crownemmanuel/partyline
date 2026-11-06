@@ -1,0 +1,22 @@
+[package]
+name = "dfjni"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[lib]
+name = "dfjni"
+crate-type = ["cdylib"]
+
+[dependencies]
+# DeepFilterNet3 with the model embedded (include_bytes), tract inference, no audio-file codecs.
+deep_filter = { git = "https://github.com/Rikorose/DeepFilterNet", rev = "7b14b895fe7fc42cab72b4a4c1e49c982bd6404b", default-features = false, features = ["tract", "default-model"] }
+jni = { version = "0.21", default-features = false }
+ndarray = "0.15"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+panic = "unwind"
+strip = true

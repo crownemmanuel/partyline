@@ -1,0 +1,8 @@
+{
+  "type": "admin.device.mute",
+  "id": "c-3",
+  "payload": {
+    "deviceId": "0f3c8a72-5d14-4b9e-a6c3-7e21f9d04b58",
+    "muted": true
+  }
+}

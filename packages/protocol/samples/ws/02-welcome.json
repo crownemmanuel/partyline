@@ -1,0 +1,161 @@
+{
+  "type": "welcome",
+  "ts": "2026-11-05T18:02:11Z",
+  "payload": {
+    "me": {
+      "id": "0f3c8a72-5d14-4b9e-a6c3-7e21f9d04b58",
+      "displayName": "Camera 2",
+      "platform": "ios",
+      "appVersion": "0.1.0",
+      "groupId": "camera",
+      "listenGroupIds": [
+        "camera"
+      ],
+      "canTalkGroupIds": [
+        "camera"
+      ],
+      "isAdmin": false,
+      "forcedTalkMode": null,
+      "adminMuted": false,
+      "createdAt": "2026-11-05T18:02:11Z",
+      "lastSeenAt": "2026-11-05T18:02:11Z",
+      "live": {
+        "online": true,
+        "rtcConnected": false,
+        "micLive": false,
+        "speakerMuted": false,
+        "talkMode": "ptt",
+        "talkTargets": [
+          "g:camera"
+        ],
+        "speaking": false,
+        "battery": null,
+        "charging": null,
+        "headset": null,
+        "outputRoute": null,
+        "rttMs": null
+      }
+    },
+    "devices": [
+      {
+        "id": "a0d1e5f2-7c3b-4e8a-9f60-2b4c6d8e0a11",
+        "displayName": "Producer",
+        "platform": "desktop",
+        "appVersion": "0.1.0",
+        "groupId": "producer",
+        "listenGroupIds": [
+          "producer",
+          "camera",
+          "backstage"
+        ],
+        "canTalkGroupIds": [
+          "producer",
+          "camera",
+          "backstage"
+        ],
+        "isAdmin": true,
+        "forcedTalkMode": null,
+        "adminMuted": false,
+        "createdAt": "2026-11-04T09:00:00Z",
+        "lastSeenAt": "2026-11-05T18:02:11Z",
+        "live": {
+          "online": true,
+          "rtcConnected": true,
+          "micLive": false,
+          "speakerMuted": false,
+          "talkMode": "latch",
+          "talkTargets": [
+            "g:camera"
+          ],
+          "speaking": false,
+          "battery": null,
+          "charging": null,
+          "headset": null,
+          "outputRoute": null,
+          "rttMs": null
+        }
+      },
+      {
+        "id": "0f3c8a72-5d14-4b9e-a6c3-7e21f9d04b58",
+        "displayName": "Camera 2",
+        "platform": "ios",
+        "appVersion": "0.1.0",
+        "groupId": "camera",
+        "listenGroupIds": [
+          "camera"
+        ],
+        "canTalkGroupIds": [
+          "camera"
+        ],
+        "isAdmin": false,
+        "forcedTalkMode": null,
+        "adminMuted": false,
+        "createdAt": "2026-11-05T18:02:11Z",
+        "lastSeenAt": "2026-11-05T18:02:11Z",
+        "live": {
+          "online": true,
+          "rtcConnected": false,
+          "micLive": false,
+          "speakerMuted": false,
+          "talkMode": "ptt",
+          "talkTargets": [
+            "g:camera"
+          ],
+          "speaking": false,
+          "battery": null,
+          "charging": null,
+          "headset": null,
+          "outputRoute": null,
+          "rttMs": null
+        }
+      }
+    ],
+    "groups": [
+      {
+        "id": "producer",
+        "name": "Producer",
+        "color": "#e11d48",
+        "sortOrder": 0,
+        "defaultTalkMode": "latch"
+      },
+      {
+        "id": "camera",
+        "name": "Camera",
+        "color": "#2563eb",
+        "sortOrder": 1,
+        "defaultTalkMode": null
+      },
+      {
+        "id": "backstage",
+        "name": "Backstage",
+        "color": "#16a34a",
+        "sortOrder": 2,
+        "defaultTalkMode": null
+      }
+    ],
+    "server": {
+      "serverId": "6e2a1c4e-9b1f-4d3a-8c2e-1f0a9b7c5d31",
+      "name": "Emmanuel's MacBook",
+      "appVersion": "0.1.0",
+      "apiVersion": 1,
+      "joinCode": null,
+      "joinOpen": true,
+      "fingerprint": "ab12cd34ef56ab12cd34ef56ab12cd34ef56ab12cd34ef56ab12cd34ef56ab12",
+      "failedJoinAttempts": 0
+    },
+    "settings": {
+      "crewCanBroadcast": false,
+      "defaultTalkMode": "ptt",
+      "quickReplies": [
+        "OK",
+        "Standby",
+        "Go",
+        "Problem",
+        "Can't hear"
+      ]
+    },
+    "livekitToken": "eyJhbGciOiJIUzI1NiJ9.SAMPLE.livekit-token",
+    "roomName": "partyline",
+    "messages": []
+  }
+}

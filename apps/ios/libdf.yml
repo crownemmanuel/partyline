@@ -1,0 +1,3 @@
+# Rewritten by scripts/build-libdf.sh once Vendor/DeepFilter.xcframework exists.
+# Placeholder: no DeepFilterNet, voice isolation falls back to "basic".
+{}

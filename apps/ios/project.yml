@@ -1,0 +1,95 @@
+name: PartyLine
+include:
+  - libdf.yml
+options:
+  bundleIdPrefix: com.partyline
+  deploymentTarget:
+    iOS: "16.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "5.10"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    DEVELOPMENT_TEAM: ""
+packages:
+  LiveKit:
+    url: https://github.com/livekit/client-sdk-swift
+    from: "2.0.0"
+targets:
+  PartyLine:
+    type: application
+    platform: iOS
+    sources:
+      - path: PartyLine
+      - path: Shared
+    dependencies:
+      - package: LiveKit
+      - target: PartyLineWidgets
+    info:
+      path: PartyLine/Resources/Info.plist
+      properties:
+        CFBundleDisplayName: PartyLine
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        UILaunchScreen: {}
+        UIApplicationSupportsIndirectInputEvents: true
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        UIBackgroundModes: [audio, voip]
+        NSSupportsLiveActivities: true
+        ITSAppUsesNonExemptEncryption: false
+        NSMicrophoneUsageDescription: PartyLine sends your voice to your crew when you talk.
+        NSLocalNetworkUsageDescription: PartyLine finds and connects to the intercom server on this Wi-Fi network.
+        NSBonjourServices: [_partyline._tcp]
+        NSCameraUsageDescription: Scan the join QR code shown on the PartyLine host.
+        NSUserNotificationsUsageDescription: PartyLine shows crew messages on the lock screen.
+        NSAppTransportSecurity:
+          NSAllowsLocalNetworking: true
+        CFBundleURLTypes:
+          - CFBundleURLName: com.partyline.app
+            CFBundleURLSchemes: [partyline]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.partyline.app
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        TARGETED_DEVICE_FAMILY: "1"
+        CODE_SIGN_STYLE: Automatic
+  PartyLineWidgets:
+    type: app-extension
+    platform: iOS
+    deploymentTarget: "16.2"
+    sources:
+      - path: Widgets
+      - path: Shared
+    info:
+      path: Widgets/Info.plist
+      properties:
+        CFBundleDisplayName: PartyLine
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.partyline.app.widgets
+        TARGETED_DEVICE_FAMILY: "1"
+        CODE_SIGN_STYLE: Automatic
+  PartyLineTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - path: PartyLineTests
+    dependencies:
+      - target: PartyLine
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: com.partyline.app.tests
+schemes:
+  PartyLine:
+    build:
+      targets:
+        PartyLine: all
+        PartyLineTests: [test]
+    test:
+      targets: [PartyLineTests]

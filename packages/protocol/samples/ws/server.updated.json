@@ -1,0 +1,14 @@
+{
+  "type": "server.updated",
+  "ts": "2026-11-05T18:02:11Z",
+  "payload": {
+    "serverId": "6e2a1c4e-9b1f-4d3a-8c2e-1f0a9b7c5d31",
+    "name": "Emmanuel's MacBook",
+    "appVersion": "0.1.0",
+    "apiVersion": 1,
+    "joinCode": null,
+    "joinOpen": true,
+    "fingerprint": "ab12cd34ef56ab12cd34ef56ab12cd34ef56ab12cd34ef56ab12cd34ef56ab12",
+    "failedJoinAttempts": 0
+  }
+}

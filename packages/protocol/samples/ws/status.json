@@ -1,0 +1,12 @@
+{
+  "type": "status",
+  "payload": {
+    "rtcConnected": true,
+    "speaking": false,
+    "battery": 82,
+    "charging": false,
+    "headset": true,
+    "rttMs": 12,
+    "outputRoute": "headset"
+  }
+}

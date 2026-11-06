@@ -1,0 +1,207 @@
+# Builds the PartyLine desktop app for macOS (Apple silicon), Windows x64 and Linux x64, signs the
+# update files and publishes a GitHub Release with the installers and latest.json, which installed
+# apps read to offer updates. See docs/RELEASES.md.
+#
+# - Push a tag v1.2.3 (made with `node scripts/release.ts 1.2.3`) → build, then publish the release.
+#   A tag with a suffix (v1.2.3-beta.1) is published as a pre-release: apps do not offer it.
+# - Actions → Release → Run workflow → rebuild an existing tag whose release is still a draft.
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Existing tag to build, e.g. v0.2.0
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: release-${{ github.event.inputs.tag || github.ref_name }}
+
+env:
+  TAG: ${{ github.event.inputs.tag || github.ref_name }}
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  prepare:
+    name: Check versions, create the draft release
+    runs-on: ubuntu-latest
+    outputs:
+      tag: ${{ steps.meta.outputs.tag }}
+      version: ${{ steps.meta.outputs.version }}
+      prerelease: ${{ steps.meta.outputs.prerelease }}
+      release_id: ${{ steps.release.outputs.id }}
+      notes: ${{ steps.meta.outputs.notes }}
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ env.TAG }}
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+
+      - name: Signing key is set
+        env:
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+        run: |
+          if [ -z "$TAURI_SIGNING_PRIVATE_KEY" ]; then
+            echo "::error::Add the TAURI_SIGNING_PRIVATE_KEY and TAURI_SIGNING_PRIVATE_KEY_PASSWORD repository secrets (docs/RELEASES.md)."
+            exit 1
+          fi
+
+      - name: Tag matches the app version
+        run: node scripts/release.ts --check "$TAG"
+
+      - name: Release notes from the tag message
+        id: meta
+        run: |
+          # actions/checkout can leave a lightweight copy of the tag: fetch the annotated one.
+          git fetch --force --no-tags origin "refs/tags/$TAG:refs/tags/$TAG"
+          version="${TAG#v}"
+          notes="$(git for-each-ref "refs/tags/$TAG" --format='%(contents:body)' | sed -e '/^-----BEGIN PGP SIGNATURE-----/,$d')"
+          [ -n "$(echo "$notes" | tr -d '[:space:]')" ] || notes="$(git for-each-ref "refs/tags/$TAG" --format='%(contents:subject)')"
+          {
+            echo "tag=$TAG"
+            echo "version=$version"
+            if [[ "$version" == *-* ]]; then echo "prerelease=true"; else echo "prerelease=false"; fi
+            echo "notes<<NOTES_EOF"
+            echo "$notes"
+            echo "NOTES_EOF"
+          } >> "$GITHUB_OUTPUT"
+          printf '%s\n' "$notes" > notes.md
+          cat >> notes.md <<'EOF'
+
+          ### Install
+          - **macOS** (Apple silicon): `.dmg`. Not notarized yet: after dragging PartyLine to Applications, run `xattr -cr /Applications/PartyLine.app` once.
+          - **Windows** (x64): `PartyLine_*_x64-setup.exe`. Not code-signed yet: if SmartScreen says "Windows protected your PC", choose *More info → Run anyway*.
+          - **Linux** (x64): `.AppImage` (`chmod +x` it, then run; this one updates itself) or `.deb` (`sudo apt install ./PartyLine_*.deb`; update it with a newer .deb).
+          - Phones join from the browser, or with the iPhone / Android apps.
+
+          Installed desktop apps show *PartyLine x.y.z is available* and update when you press **Update**.
+          EOF
+
+      - name: Create the draft release
+        id: release
+        run: |
+          id="$(gh api "repos/$GITHUB_REPOSITORY/releases?per_page=100" --jq ".[] | select(.tag_name == \"$TAG\") | .id" | head -n1)"
+          if [ -n "$id" ]; then
+            if [ "$(gh api "repos/$GITHUB_REPOSITORY/releases/$id" --jq .draft)" != "true" ]; then
+              echo "::error::The release for $TAG is already published. Cut a new version instead (node scripts/release.ts patch)."
+              exit 1
+            fi
+            gh api -X PATCH "repos/$GITHUB_REPOSITORY/releases/$id" -f tag_name="$TAG" -F body=@notes.md > /dev/null
+          else
+            # The id comes from the response: a new draft is not in the release list straight away.
+            id="$(gh api -X POST "repos/$GITHUB_REPOSITORY/releases" \
+              -f tag_name="$TAG" -f name="PartyLine ${{ steps.meta.outputs.version }}" -F body=@notes.md \
+              -F draft=true -F prerelease=${{ steps.meta.outputs.prerelease }} --jq .id)"
+          fi
+          if [ -z "$id" ]; then
+            echo "::error::Could not find or create the release for $TAG."
+            exit 1
+          fi
+          echo "id=$id" >> "$GITHUB_OUTPUT"
+
+  build:
+    name: Build (${{ matrix.name }})
+    needs: prepare
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: macOS Apple silicon
+            os: macos-latest
+            args: --target aarch64-apple-darwin --bundles app,dmg
+          - name: Windows x64
+            os: windows-latest
+            args: --bundles nsis
+          - name: Linux x64
+            os: ubuntu-24.04
+            args: --bundles deb,appimage
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 90
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ needs.prepare.outputs.tag }}
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: |
+            packages/web-client/package-lock.json
+            apps/desktop/package-lock.json
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: ${{ runner.os == 'macOS' && 'aarch64-apple-darwin' || '' }}
+
+      - uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: apps/desktop/src-tauri -> target
+
+      - name: Linux build dependencies
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libwebkit2gtk-4.1-dev libappindicator3-dev librsvg2-dev patchelf libfuse2t64
+
+      - name: LiveKit sidecar
+        run: scripts/fetch-livekit.sh
+
+      - run: npm ci --prefix packages/web-client
+      - run: npm ci --prefix apps/desktop
+
+      - name: Build, sign and upload
+        uses: tauri-apps/tauri-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_SIGNING_PRIVATE_KEY_PASSWORD }}
+          APPIMAGE_EXTRACT_AND_RUN: 1
+        with:
+          projectPath: apps/desktop
+          releaseId: ${{ needs.prepare.outputs.release_id }}
+          # The release notes the app's update notice shows (latest.json).
+          releaseBody: ${{ needs.prepare.outputs.notes }}
+          updaterJsonPreferNsis: true
+          retryAttempts: 1
+          args: ${{ matrix.args }}
+
+  publish:
+    name: Publish the release
+    needs: [prepare, build]
+    runs-on: ubuntu-latest
+    env:
+      # A draft cannot be found by its tag: work on the release by id.
+      RELEASE: repos/${{ github.repository }}/releases/${{ needs.prepare.outputs.release_id }}
+    steps:
+      - name: latest.json covers macOS, Windows and Linux
+        run: |
+          url="$(gh api "$RELEASE" --jq '.assets[] | select(.name == "latest.json") | .url')"
+          [ -n "$url" ] || { echo "::error::The release has no latest.json."; exit 1; }
+          gh api -H "Accept: application/octet-stream" "$url" > latest.json
+          jq -e '.platforms["darwin-aarch64"].signature and .platforms["windows-x86_64"].signature and .platforms["linux-x86_64"].signature' latest.json > /dev/null || {
+            echo "::error::latest.json is missing a platform (two builds may have uploaded it at once). Re-run the failed or last build job."
+            cat latest.json
+            exit 1
+          }
+
+      - name: Publish
+        run: |
+          if [ "${{ needs.prepare.outputs.prerelease }}" = "true" ]; then
+            gh api -X PATCH "$RELEASE" -f tag_name="$TAG" -F draft=false -F prerelease=true > /dev/null
+          else
+            gh api -X PATCH "$RELEASE" -f tag_name="$TAG" -F draft=false -F prerelease=false -f make_latest=true > /dev/null
+          fi
+          gh api "$RELEASE" --jq '"Published " + .html_url'

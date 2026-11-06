@@ -1,0 +1,8 @@
+{
+  "type": "admin.notice",
+  "ts": "2026-11-05T18:02:11Z",
+  "payload": {
+    "kind": "muted",
+    "text": "The producer muted your mic"
+  }
+}

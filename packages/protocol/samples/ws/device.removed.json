@@ -1,0 +1,7 @@
+{
+  "type": "device.removed",
+  "ts": "2026-11-05T18:02:11Z",
+  "payload": {
+    "deviceId": "0f3c8a72-5d14-4b9e-a6c3-7e21f9d04b58"
+  }
+}

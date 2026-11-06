@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2023", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "skipLibCheck": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "isolatedModules": true,
+    "types": ["vite/client"],
+    "paths": { "@partyline/protocol": ["../protocol/src/index.ts"] }
+  },
+  "include": ["src", "../protocol/src"],
+  "exclude": ["src/**/*.test.ts"]
+}

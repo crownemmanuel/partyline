@@ -1,0 +1,29 @@
+{
+  "type": "groups.updated",
+  "ts": "2026-11-05T18:02:11Z",
+  "payload": {
+    "groups": [
+      {
+        "id": "producer",
+        "name": "Producer",
+        "color": "#e11d48",
+        "sortOrder": 0,
+        "defaultTalkMode": "latch"
+      },
+      {
+        "id": "camera",
+        "name": "Camera",
+        "color": "#2563eb",
+        "sortOrder": 1,
+        "defaultTalkMode": null
+      },
+      {
+        "id": "backstage",
+        "name": "Backstage",
+        "color": "#16a34a",
+        "sortOrder": 2,
+        "defaultTalkMode": null
+      }
+    ]
+  }
+}

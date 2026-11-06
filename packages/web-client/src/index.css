@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+:root { color-scheme: dark; }
+html, body, #root { height: 100%; }
+body { background: #0a0a0a; color: #e5e7eb; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; -webkit-tap-highlight-color: transparent; overscroll-behavior: none; }
+button { touch-action: manipulation; -webkit-user-select: none; user-select: none; }
+.talk { touch-action: none; -webkit-touch-callout: none; }
+input, select, textarea { background: #161616; border: 1px solid #2a2a2a; border-radius: .5rem; padding: .5rem .75rem; color: inherit; }
+input:focus, select:focus, textarea:focus { outline: 2px solid #3a7bd5; outline-offset: 0; }
+@keyframes flash { 0%,100% { background: transparent } 50% { background: rgba(250,204,21,.35) } }
+.flash { animation: flash .4s 4; }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.PartyLine" parent="android:Theme.Material.NoActionBar">
+        <item name="android:windowBackground">#0B0C0E</item>
+        <item name="android:statusBarColor">#0B0C0E</item>
+        <item name="android:navigationBarColor">#0B0C0E</item>
+        <!-- Android 12+ launch splash: the icon on black, like the icon itself. -->
+        <item name="android:windowSplashScreenBackground">#000000</item>
+    </style>
+</resources>

@@ -1,0 +1,5 @@
+build/
+*.xcuserstate
+xcuserdata/
+Vendor/DeepFilter.xcframework/
+PartyLine/Resources/DeepFilterNet3_onnx.tar.gz

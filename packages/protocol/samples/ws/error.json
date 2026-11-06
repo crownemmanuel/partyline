@@ -1,0 +1,9 @@
+{
+  "type": "error",
+  "ts": "2026-11-05T18:02:11Z",
+  "payload": {
+    "replyTo": "c-1",
+    "code": "bad_request",
+    "message": "talkTargets: not allowed to talk to g:backstage"
+  }
+}

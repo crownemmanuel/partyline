@@ -1,0 +1,16 @@
+{
+  "name": "@partyline/desktop",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "tauri": "tauri",
+    "dev": "npm --prefix ../../packages/web-client run build && tauri dev",
+    "build": "tauri build",
+    "fetch-livekit": "../../scripts/fetch-livekit.sh",
+    "release": "node ../../scripts/release.ts",
+    "build:installer": "tauri build --config src-tauri/tauri.unsigned.conf.json"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "2.12.4"
+  }
+}

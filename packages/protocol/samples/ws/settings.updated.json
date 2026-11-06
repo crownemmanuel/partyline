@@ -1,0 +1,15 @@
+{
+  "type": "settings.updated",
+  "ts": "2026-11-05T18:02:11Z",
+  "payload": {
+    "crewCanBroadcast": false,
+    "defaultTalkMode": "ptt",
+    "quickReplies": [
+      "OK",
+      "Standby",
+      "Go",
+      "Problem",
+      "Can't hear"
+    ]
+  }
+}

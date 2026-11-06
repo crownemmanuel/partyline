@@ -1,0 +1,13 @@
+{
+  "type": "state.set",
+  "id": "c-1",
+  "payload": {
+    "talkMode": "ptt",
+    "talkTargets": [
+      "g:camera"
+    ],
+    "listenGroupIds": [
+      "camera"
+    ]
+  }
+}

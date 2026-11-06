@@ -1,0 +1,6 @@
+{
+  "error": {
+    "code": "revoked",
+    "message": "This device was removed by the admin"
+  }
+}

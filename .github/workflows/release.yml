@@ -77,8 +77,17 @@ jobs:
           printf '%s\n' "$notes" > notes.md
           cat >> notes.md <<'EOF'
 
+          ### macOS: run this once after installing
+          PartyLine is not notarized by Apple yet. Open the `.dmg`, drag PartyLine to Applications, then open Terminal and run:
+
+          ```
+          xattr -cr /Applications/PartyLine.app
+          ```
+
+          Without it macOS says PartyLine "is damaged and can't be opened". Updates installed from inside the app don't need it again.
+
           ### Install
-          - **macOS** (Apple silicon): `.dmg`. Not notarized yet: after dragging PartyLine to Applications, run `xattr -cr /Applications/PartyLine.app` once.
+          - **macOS** (Apple silicon): `.dmg`, then the step above.
           - **Windows** (x64): `PartyLine_*_x64-setup.exe`. Not code-signed yet: if SmartScreen says "Windows protected your PC", choose *More info → Run anyway*.
           - **Linux** (x64): `.AppImage` (`chmod +x` it, then run; this one updates itself) or `.deb` (`sudo apt install ./PartyLine_*.deb`; update it with a newer .deb).
           - Phones join from the browser, or with the iPhone / Android apps.

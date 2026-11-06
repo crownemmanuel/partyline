@@ -360,6 +360,16 @@
             <div><b>Linux</b><span>.AppImage · .deb</span></div>
           </a>
         </div>
+        <div class="mac-note" id="mac-first-launch">
+          <div>
+            <h3>macOS: one step after installing</h3>
+            <p>PartyLine isn&#x27;t notarized by Apple yet. After dragging it to Applications, open Terminal and run this once, or macOS will say the app &ldquo;is damaged and can&#x27;t be opened&rdquo;:</p>
+          </div>
+          <div class="cmd">
+            <code id="mac-cmd">xattr -cr /Applications/PartyLine.app</code>
+            <button type="button" class="cmd-copy" data-copy="mac-cmd">Copy</button>
+          </div>
+        </div>
         <div class="phones-note">
           <div>
             <h3>iPhone &amp; Android</h3>
@@ -377,6 +387,10 @@
         <p class="kicker">FAQ</p>
         <h2>Questions crews ask</h2>
         <div class="faq">
+          <details>
+            <summary>macOS says PartyLine &ldquo;is damaged and can&#x27;t be opened&rdquo;. What do I do?</summary>
+            <p>PartyLine is not notarized by Apple yet, so macOS quarantines the download. Drag PartyLine to Applications, open Terminal and run <code>xattr -cr /Applications/PartyLine.app</code> once. After that it opens normally, and in-app updates keep working without this step.</p>
+          </details>
           <details>
             <summary>Is PartyLine really free?</summary>
             <p>Yes. PartyLine costs nothing: no accounts, no subscriptions, no per-user fees and no cloud service. Download the desktop app, put the app on your crew&#x27;s phones and use it for as many shows as you like.</p>
@@ -436,6 +450,14 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "macOS says PartyLine is damaged and can't be opened. What do I do?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PartyLine is not notarized by Apple yet, so macOS quarantines the download. Drag PartyLine to Applications, open Terminal and run xattr -cr /Applications/PartyLine.app once. After that it opens normally, and in-app updates keep working without this step."
+      }
+    },
     {
       "@type": "Question",
       "name": "Is PartyLine really free?",

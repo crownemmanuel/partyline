@@ -20,3 +20,15 @@
   var match = document.querySelector('.platform[data-os="' + os + '"]');
   if (match) match.classList.add("is-yours");
 })();
+
+// Copy buttons next to commands (macOS first-launch step).
+document.querySelectorAll(".cmd-copy").forEach(function (b) {
+  b.addEventListener("click", function () {
+    var el = document.getElementById(b.getAttribute("data-copy"));
+    if (!el || !navigator.clipboard) return;
+    navigator.clipboard.writeText(el.textContent).then(function () {
+      b.textContent = "Copied";
+      setTimeout(function () { b.textContent = "Copy"; }, 1500);
+    });
+  });
+});

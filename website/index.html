@@ -3,13 +3,79 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>PartyLine — Wi‑Fi intercom for production crews</title>
-  <meta name="description" content="PartyLine is a free, low-latency partyline intercom for small production teams. Host it on a laptop, join from iPhone, Android or a browser on the same Wi‑Fi. Headsets on, phones locked, producer talks to anyone.">
+  <title>PartyLine: Free Intercom App for Production Crews</title>
+  <meta name="description" content="Free crew intercom app for iPhone, Android, Mac, Windows and Linux. Phones and headsets become a low-latency partyline over Wi‑Fi. No beltpacks, no fees.">
+  <meta name="keywords" content="free intercom app, crew intercom, production intercom, partyline intercom, wireless intercom alternative, phone intercom, push to talk app, walkie talkie app for crew, church production intercom, theatre intercom, stage manager comms, live event communication, broadcast talkback, Wi-Fi intercom, LAN intercom">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="application-name" content="PartyLine">
   <meta name="theme-color" content="#0b0f17">
-  <meta property="og:title" content="PartyLine — Wi‑Fi intercom for production crews">
-  <meta property="og:description" content="Turn the phones your crew already carries into a low-latency partyline intercom. One laptop hosts, everyone joins over Wi‑Fi.">
+  <link rel="canonical" href="https://crownemmanuel.github.io/partyline/">
+  <link rel="alternate" type="text/markdown" title="PartyLine summary for AI assistants" href="https://crownemmanuel.github.io/partyline/llms.txt">
+  <link rel="sitemap" type="application/xml" href="https://crownemmanuel.github.io/partyline/sitemap.xml">
+
+  <meta property="og:site_name" content="PartyLine">
+  <meta property="og:title" content="PartyLine: the free intercom app for production crews">
+  <meta property="og:description" content="Turn the phones your crew already carries into a low-latency partyline intercom. One laptop hosts, everyone joins over Wi‑Fi. Free for macOS, Windows, Linux, iPhone and Android.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="https://crownemmanuel.github.io/partyline/assets/hero.jpg">
+  <meta property="og:url" content="https://crownemmanuel.github.io/partyline/">
+  <meta property="og:image" content="https://crownemmanuel.github.io/partyline/assets/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="A stage manager backstage at a concert wearing a headset, with a phone in their back pocket">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="PartyLine: the free intercom app for production crews">
+  <meta name="twitter:description" content="Phones + headsets = a low-latency crew intercom over Wi‑Fi. Groups, push-to-talk, producer talkback. Free.">
+  <meta name="twitter:image" content="https://crownemmanuel.github.io/partyline/assets/og.jpg">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://crownemmanuel.github.io/partyline/#app",
+        "name": "PartyLine",
+        "alternateName": ["PartyLine Intercom", "PartyLine crew intercom"],
+        "description": "A free, low-latency partyline intercom app for small production teams on one Wi-Fi network. One computer hosts; crew join from iPhone, Android, desktop or a web browser and talk over headsets, in groups, with push-to-talk or open mic, even with the phone locked.",
+        "applicationCategory": "CommunicationApplication",
+        "applicationSubCategory": "Intercom",
+        "operatingSystem": "macOS, Windows, Linux, iOS, Android, Web browser",
+        "url": "https://crownemmanuel.github.io/partyline/",
+        "downloadUrl": "https://github.com/crownemmanuel/partyline/releases/latest",
+        "installUrl": "https://github.com/crownemmanuel/partyline/releases/latest",
+        "codeRepository": "https://github.com/crownemmanuel/partyline",
+        "image": "https://crownemmanuel.github.io/partyline/assets/og.jpg",
+        "screenshot": "https://crownemmanuel.github.io/partyline/assets/hero.jpg",
+        "isAccessibleForFree": true,
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "availability": "https://schema.org/InStock" },
+        "featureList": [
+          "Free with no accounts, subscriptions or per-user fees",
+          "Low-latency Opus audio over WebRTC on the local network",
+          "Works without internet access",
+          "Groups (channels) with server-enforced audio routing",
+          "Producer can talk to everyone, a group, or one person",
+          "Reply to producer privately",
+          "Push-to-talk or latched open mic",
+          "Keeps working with the phone screen locked (CallKit on iPhone, call-style service on Android)",
+          "Headset button push-to-talk",
+          "Join with a 6-digit code or QR code; devices are remembered",
+          "Text messages, quick replies and attention buzz",
+          "Admin can mute, rename, move or remove any device",
+          "Noise suppression / voice isolation",
+          "3 to 30 devices per show"
+        ],
+        "keywords": "free intercom app, crew intercom, partyline, production communication, push to talk, wireless intercom alternative, church production, theatre, live events, broadcast talkback"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://crownemmanuel.github.io/partyline/#website",
+        "name": "PartyLine",
+        "url": "https://crownemmanuel.github.io/partyline/",
+        "about": { "@id": "https://crownemmanuel.github.io/partyline/#app" }
+      }
+    ]
+  }
+  </script>
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="apple-touch-icon" href="assets/icon.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,6 +90,7 @@
       <nav class="nav-links" aria-label="Main">
         <a href="#how">How it works</a>
         <a href="#features">Features</a>
+        <a href="#use-cases">Use cases</a>
         <a href="#download">Download</a>
         <a href="#faq">FAQ</a>
       </nav>
@@ -39,13 +106,13 @@
     <section class="hero">
       <picture class="hero-bg">
         <source srcset="assets/hero.webp" type="image/webp">
-        <img src="assets/hero.jpg" alt="" fetchpriority="high">
+        <img src="assets/hero.jpg" alt="A stage manager backstage at a concert talking on a headset intercom, with a phone in their back pocket" fetchpriority="high">
       </picture>
       <div class="wrap hero-inner">
         <div class="hero-copy">
-          <p class="eyebrow"><span class="live-dot"></span> Free &amp; open source intercom</p>
-          <h1>Your whole crew on one channel. <em>No beltpacks.</em></h1>
-          <p class="lede">PartyLine turns the phones your team already carries into a low‑latency partyline intercom. One laptop hosts, everyone joins over the venue Wi‑Fi. Headsets on, screens locked, and a producer who can talk to any group, or any one person.</p>
+          <p class="eyebrow"><span class="live-dot"></span> Free crew intercom app</p>
+          <h1>The free intercom for your whole crew. <em>No beltpacks.</em></h1>
+          <p class="lede">PartyLine turns the phones your team already carries into a low‑latency partyline intercom. One laptop hosts, everyone joins over the venue Wi‑Fi. Headsets on, screens locked, and a producer who can talk to any group, or any one person. Free, with no accounts and no subscription.</p>
           <div class="cta-row">
             <a class="btn btn-primary" id="hero-download" href="https://github.com/crownemmanuel/partyline/releases/latest">
               <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M12 4v11m0 0 5-5m-5 5-5-5M5 20h14"/></svg>
@@ -229,6 +296,50 @@
       </div>
     </section>
 
+    <!-- Use cases -->
+    <section class="section uses" id="use-cases">
+      <div class="wrap">
+        <p class="kicker">Who it's for</p>
+        <h2>Comms for any team that runs a show</h2>
+        <p class="section-lede">If your crew needs to talk while their hands are busy, PartyLine gives them a free, hands‑free intercom on the phones already in their pockets.</p>
+        <div class="use-grid">
+          <article class="use"><h3>Churches &amp; worship teams</h3><p>Connect the producer, camera operators, sound, lighting, slides and stage hands for Sunday services and livestreams.</p></article>
+          <article class="use"><h3>Theatre &amp; stage management</h3><p>Call cues to lighting, sound, fly and deck crews, with a private line between the stage manager and each department.</p></article>
+          <article class="use"><h3>Live events &amp; concerts</h3><p>Keep production, stage, front of house and backstage on separate groups that the producer can reach all at once.</p></article>
+          <article class="use"><h3>Broadcast &amp; livestreams</h3><p>Director‑to‑camera talkback for multi‑camera streams, with operators replying straight to the director.</p></article>
+          <article class="use"><h3>Film &amp; video sets</h3><p>A quiet set‑wide channel for the AD, camera, grip and production assistants, with no radios to charge and hand out.</p></article>
+          <article class="use"><h3>Conferences &amp; corporate AV</h3><p>Coordinate show callers, presenters' handlers and the tech booth across rooms on the venue Wi‑Fi.</p></article>
+          <article class="use"><h3>Schools &amp; community productions</h3><p>Pro‑style crew comms for school plays, graduations and sports broadcasts, with no budget for intercom hardware.</p></article>
+          <article class="use"><h3>Sports &amp; venues</h3><p>Link the scoreboard, video board, PA announcer and floor crew during games and tournaments.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison -->
+    <section class="section compare" id="compare">
+      <div class="wrap">
+        <p class="kicker">Compared</p>
+        <h2>A free alternative to radios and beltpack intercoms</h2>
+        <p class="section-lede">Walkie‑talkies are cheap but one person talks at a time. Traditional wireless intercom systems sound great but cost thousands. PartyLine gives you full‑duplex crew comms with the hardware you already own.</p>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr><th scope="col"></th><th scope="col" class="us">PartyLine</th><th scope="col">Walkie‑talkies</th><th scope="col">Wireless beltpack intercom</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Cost</th><td class="us">Free</td><td>Buy a radio per person</td><td>Base station, beltpacks, antennas</td></tr>
+              <tr><th scope="row">Hardware</th><td class="us">Phones + any headset</td><td>Radios, chargers, earpieces</td><td>Dedicated beltpacks and headsets</td></tr>
+              <tr><th scope="row">Talk and listen at once</th><td class="us">Yes</td><td>No, one at a time</td><td>Yes</td></tr>
+              <tr><th scope="row">Separate groups</th><td class="us">Yes, enforced by the server</td><td>Switch channels by hand</td><td>Yes</td></tr>
+              <tr><th scope="row">Talk to one person</th><td class="us">Yes</td><td>No</td><td>Depends on system</td></tr>
+              <tr><th scope="row">Text messages &amp; cues</th><td class="us">Yes</td><td>No</td><td>Rarely</td></tr>
+              <tr><th scope="row">Range</th><td class="us">Your Wi‑Fi network</td><td>Radio range</td><td>Radio range</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
     <!-- Download -->
     <section class="section download" id="download">
       <div class="wrap">
@@ -267,8 +378,28 @@
         <h2>Questions crews ask</h2>
         <div class="faq">
           <details>
+            <summary>Is PartyLine really free?</summary>
+            <p>Yes. PartyLine costs nothing: no accounts, no subscriptions, no per-user fees and no cloud service. Download the desktop app, put the app on your crew&#x27;s phones and use it for as many shows as you like.</p>
+          </details>
+          <details>
+            <summary>What is a partyline intercom?</summary>
+            <p>A partyline is the shared talk channel a production crew uses to coordinate a show: everyone on the line hears everyone else, hands-free and in real time. PartyLine gives you that over Wi‑Fi, using phones and headsets instead of beltpacks and cables.</p>
+          </details>
+          <details>
+            <summary>Can I use my phone as an intercom for my crew?</summary>
+            <p>Yes. Install PartyLine on iPhone or Android, plug in a headset, and the phone becomes a full-duplex crew intercom with push-to-talk or open mic. Unlike walkie-talkie apps, people can talk and listen at the same time, and the audio stays on your local network.</p>
+          </details>
+          <details>
+            <summary>Is PartyLine a free alternative to a wireless intercom system?</summary>
+            <p>For small teams, yes. Instead of a base station and beltpacks, one laptop runs the PartyLine host and the crew use the phones they already own. You get groups, private talkback and push-to-talk at no cost. It covers whatever area your Wi‑Fi covers.</p>
+          </details>
+          <details>
+            <summary>What do I need to get started?</summary>
+            <p>One computer to host the show (macOS on Apple silicon, Windows or Linux), a Wi‑Fi network, and your crew&#x27;s phones with headsets. Install the desktop app, share the 6-digit join code or QR code, and start talking.</p>
+          </details>
+          <details>
             <summary>Does it need the internet?</summary>
-            <p>No. Everything runs between the host laptop and the devices on the same Wi‑Fi network. A travel router with no uplink works fine.</p>
+            <p>No. Everything runs between the host computer and the devices on the same Wi‑Fi network. A travel router with no internet connection works fine.</p>
           </details>
           <details>
             <summary>How many people can join?</summary>
@@ -276,33 +407,149 @@
           </details>
           <details>
             <summary>Will it keep working when my phone is locked?</summary>
-            <p>Yes, on the iPhone and Android apps. PartyLine registers as an ongoing call (CallKit on iPhone, a call‑style foreground service on Android), so it keeps running for a whole shift. Browsers cannot guarantee this, so use the app for anyone who pockets their phone.</p>
+            <p>Yes, in the iPhone and Android apps. PartyLine runs as an ongoing call (CallKit on iPhone, a call-style foreground service on Android), so it keeps working for a whole shift. Browsers can&#x27;t guarantee this, so anyone who pockets their phone should use the app.</p>
+          </details>
+          <details>
+            <summary>Can the producer talk to just one person?</summary>
+            <p>Yes. The producer can talk to everyone, one or more groups, or a single device, and choose which groups to listen to. Crew members can hold Reply to producer so only the producer hears them.</p>
+          </details>
+          <details>
+            <summary>Who uses PartyLine?</summary>
+            <p>Small teams that need to talk during a show: church and worship production teams, theatre and stage management, live events and concerts, broadcast and livestream crews, film sets, conference AV, school productions and sports venues.</p>
           </details>
           <details>
             <summary>Do I need special headsets?</summary>
-            <p>Any wired or Bluetooth headset with a microphone works. A headset is strongly recommended: on speaker the phone can echo, and PartyLine warns you about it.</p>
+            <p>No. Any wired or Bluetooth headset with a microphone works. A headset is strongly recommended, because on speaker the phone can echo, and PartyLine warns you about it.</p>
           </details>
           <details>
-            <summary>Push‑to‑talk or open mic?</summary>
-            <p>Both. Each person can hold to talk or latch the mic on. The producer can force hold‑to‑talk on any device.</p>
+            <summary>Push-to-talk or open mic?</summary>
+            <p>Both. Each person can hold to talk or latch the mic on. The producer can force hold-to-talk on any device.</p>
           </details>
           <details>
             <summary>Why does my browser warn about the certificate?</summary>
-            <p>The host makes its own encryption certificate on first run, because there is no internet authority to sign it on a private network. The native apps verify the host by its fingerprint; in a browser you accept it once.</p>
-          </details>
-          <details>
-            <summary>Is it free?</summary>
-            <p>Yes. PartyLine is open source. No accounts, no subscriptions, no cloud.</p>
+            <p>The host makes its own encryption certificate the first time it runs, because there is no internet authority to sign it on a private network. The native apps check the host by its fingerprint; in a browser you accept it once.</p>
           </details>
         </div>
       </div>
+      <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Is PartyLine really free?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. PartyLine costs nothing: no accounts, no subscriptions, no per-user fees and no cloud service. Download the desktop app, put the app on your crew's phones and use it for as many shows as you like."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is a partyline intercom?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A partyline is the shared talk channel a production crew uses to coordinate a show: everyone on the line hears everyone else, hands-free and in real time. PartyLine gives you that over Wi‑Fi, using phones and headsets instead of beltpacks and cables."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use my phone as an intercom for my crew?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Install PartyLine on iPhone or Android, plug in a headset, and the phone becomes a full-duplex crew intercom with push-to-talk or open mic. Unlike walkie-talkie apps, people can talk and listen at the same time, and the audio stays on your local network."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is PartyLine a free alternative to a wireless intercom system?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For small teams, yes. Instead of a base station and beltpacks, one laptop runs the PartyLine host and the crew use the phones they already own. You get groups, private talkback and push-to-talk at no cost. It covers whatever area your Wi‑Fi covers."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What do I need to get started?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "One computer to host the show (macOS on Apple silicon, Windows or Linux), a Wi‑Fi network, and your crew's phones with headsets. Install the desktop app, share the 6-digit join code or QR code, and start talking."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it need the internet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Everything runs between the host computer and the devices on the same Wi‑Fi network. A travel router with no internet connection works fine."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How many people can join?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "PartyLine is designed for small production teams: about 3 to 30 devices, one show at a time."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will it keep working when my phone is locked?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, in the iPhone and Android apps. PartyLine runs as an ongoing call (CallKit on iPhone, a call-style foreground service on Android), so it keeps working for a whole shift. Browsers can't guarantee this, so anyone who pockets their phone should use the app."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can the producer talk to just one person?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The producer can talk to everyone, one or more groups, or a single device, and choose which groups to listen to. Crew members can hold Reply to producer so only the producer hears them."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who uses PartyLine?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Small teams that need to talk during a show: church and worship production teams, theatre and stage management, live events and concerts, broadcast and livestream crews, film sets, conference AV, school productions and sports venues."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need special headsets?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Any wired or Bluetooth headset with a microphone works. A headset is strongly recommended, because on speaker the phone can echo, and PartyLine warns you about it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Push-to-talk or open mic?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both. Each person can hold to talk or latch the mic on. The producer can force hold-to-talk on any device."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why does my browser warn about the certificate?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The host makes its own encryption certificate the first time it runs, because there is no internet authority to sign it on a private network. The native apps check the host by its fingerprint; in a browser you accept it once."
+      }
+    }
+  ]
+}
+      </script>
     </section>
   </main>
 
   <footer class="footer">
     <div class="wrap footer-inner">
       <a class="brand" href="#top"><img src="assets/icon.png" alt="" width="28" height="28"><span>PartyLine</span></a>
-      <p>Wi‑Fi intercom for production crews.</p>
+      <p>Free Wi‑Fi intercom app for production crews · macOS, Windows, Linux, iPhone, Android &amp; web.</p>
       <nav aria-label="Footer">
         <a href="https://github.com/crownemmanuel/partyline">GitHub</a>
         <a href="https://github.com/crownemmanuel/partyline/releases">Releases</a>

@@ -172,6 +172,34 @@ p { margin: 0; }
 @media (max-width: 960px) { .cards { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 620px) { .cards { grid-template-columns: 1fr; } }
 
+/* Use cases */
+.use-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 48px; }
+.use { padding: 24px 22px; border-radius: var(--radius); background: var(--panel); border: 1px solid var(--line); border-top: 3px solid var(--line); }
+.use:nth-child(3n+1) { border-top-color: var(--red); }
+.use:nth-child(3n+2) { border-top-color: var(--blue); }
+.use:nth-child(3n) { border-top-color: var(--green); }
+.use h3 { font-size: 1.02rem; }
+.use p { color: var(--muted); margin-top: 8px; font-size: 14.5px; }
+@media (max-width: 960px) { .use-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .use-grid { grid-template-columns: 1fr; } }
+
+/* Comparison */
+.compare { padding-top: 0; }
+.table-wrap { margin-top: 44px; overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--panel); }
+.compare table { width: 100%; min-width: 640px; border-collapse: collapse; font-size: 15px; }
+.compare th, .compare td { text-align: left; padding: 15px 20px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.compare tbody tr:last-child th, .compare tbody tr:last-child td { border-bottom: 0; }
+.compare thead th { font: 700 1rem/1.2 var(--head); color: var(--text); background: var(--panel-2); }
+.compare tbody th { font-weight: 600; color: #cbd5e1; white-space: nowrap; }
+.compare td { color: var(--muted); }
+.compare .us { color: var(--text); background: rgba(239,43,43,.07); font-weight: 600; }
+.compare thead .us { color: #fca5a5; }
+@media (max-width: 600px) {
+  .compare table { min-width: 540px; font-size: 13.5px; }
+  .compare th, .compare td { padding: 12px 12px; }
+  .compare tbody th { white-space: normal; position: sticky; left: 0; background: var(--panel); width: 110px; }
+}
+
 /* Download */
 .download { background: radial-gradient(80% 60% at 50% 0%, rgba(239,43,43,.12), transparent 70%), var(--bg-2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .download h2, .download .kicker, .download .section-lede { text-align: center; margin-left: auto; margin-right: auto; }
